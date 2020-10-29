@@ -15,4 +15,5 @@ api.add_resource(ItemList, "/item")
 api.add_resource(Item, "/item/<string:name>")
 api.add_resource(UserRegister, "/register")
 
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)

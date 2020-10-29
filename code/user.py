@@ -25,7 +25,7 @@ class User:
 
         connection.close()
         return user
-    
+
     @classmethod
     def find_by_id(cls, _id):
         connection = sqlite3.connect('data.db')
@@ -42,7 +42,7 @@ class User:
 
         connection.close()
         return user
-
+    
     def __str__(self):
         return f"id: {self.id} \nUsername: {self.username} \nPassword: {self.password}"
 
@@ -53,6 +53,10 @@ class UserRegister(Resource):
 
     def post(self):
         data = UserRegister.parser.parse_args()
+        
+        # if User.find_by_username(data['username']):
+        #     return {'message': 'User already exists'}, 400
+
         connection = sqlite3.connect('data.db')
         cursor = connection.cursor()
 
