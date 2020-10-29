@@ -1,0 +1,280 @@
+{
+	"info": {
+		"_postman_id": "12d05303-df03-42ce-b6c3-b3c2c3fc7dd6",
+		"name": "Flask-SQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/item",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT {{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{LOCAL_HOST}}/item",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"item"
+					]
+				},
+				"description": "This should return a list of items, each in JSON format."
+			},
+			"response": []
+		},
+		{
+			"name": "/auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5e6d1f8c-459d-4df7-8dda-ac335432e98a",
+						"exec": [
+							"res = JSON.parse(responseBody);",
+							"console.log(res.access_token)",
+							"pm.collectionVariables.set(\"TOKEN\", res.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"bob\",\n    \"password\": \"asdf\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL_HOST}}/auth",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"auth"
+					]
+				},
+				"description": "This should return a list of items, each in JSON format."
+			},
+			"response": []
+		},
+		{
+			"name": "/register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4631347a-4b7a-43a6-b1a1-cf260edd7cc9",
+						"exec": [
+							"res = JSON.parse(responseBody);",
+							"console.log(res.access_token)",
+							"pm.collectionVariables.set(\"TOKEN\", res.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"bob\",\n    \"password\": \"asdf\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL_HOST}}/register",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"register"
+					]
+				},
+				"description": "This should return a list of items, each in JSON format."
+			},
+			"response": []
+		},
+		{
+			"name": "/item/<name>",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d0adb2a2-2c47-47e3-894f-60f549822d7e",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT {{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{LOCAL_HOST}}/item/gmmk",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"item",
+						"gmmk"
+					]
+				},
+				"description": "This should return a list of items, each in JSON format. \n<br/>**No two items may have the same name.**"
+			},
+			"response": []
+		},
+		{
+			"name": "/item/<name>",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT {{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"price\": 70.00\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL_HOST}}/item/gmmk",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"item",
+						"gmmk"
+					]
+				},
+				"description": "This should create a new items.\n<br/>**No two items may have the same name.**"
+			},
+			"response": []
+		},
+		{
+			"name": "/item/<name>",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT {{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"price\": 110.00\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL_HOST}}/item/gmmk",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"item",
+						"gmmk"
+					]
+				},
+				"description": "This should update a item, if item already existe they will create a new items.\n<br/>**No two items may have the same name.**"
+			},
+			"response": []
+		},
+		{
+			"name": "/item/<name>",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT {{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{LOCAL_HOST}}/item/gmmk",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"item",
+						"gmmk"
+					]
+				},
+				"description": "This should delete a item by name."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "af9edaca-f759-4250-8509-fcd50dc9d25a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "202541dc-6212-4c36-b5ca-a43a58808dee",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "a6ded124-d5fc-4d35-85f4-80e8a4fe9d76",
+			"key": "LOCAL_HOST",
+			"value": "http://127.0.0.1:5000"
+		},
+		{
+			"id": "235ab395-8019-47e4-b7f6-f630cc0d3b21",
+			"key": "TOKEN",
+			"value": ""
+		}
+	],
+	"protocolProfileBehavior": {}
+}
